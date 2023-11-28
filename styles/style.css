@@ -17,4 +17,229 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font);
+  background-color: var(--background-color);
+  color: var(--accent-color);
+  background-image: var(--background-gradient);
+  background-position: cover;
+}
+
+/* Ниже стили для шапки */
+
+.header {
+  font-family: var(--accent-font);
+  background-color: var(--background-color);
+  outline: 2px solid var(--accent-color);
+  width: clamp(23.188rem, 30.516vw + 16.035rem, 43.5rem);
+  margin: 102px auto 104px;
+  text-transform: uppercase;
+}
+
+.header__title {
+  text-align: center;
+  padding-block-start: 136px;
+  padding-block-end: 20px;
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.header__description {
+  text-align: center;
+  margin-block-end: 25px;
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-bottom: 25px;
+}
+
+.theme-menu__item {
+  padding-left: clamp(9.625rem, 15.117vw + 6.082rem, 19.688rem);
+}
+
+.theme-menu__button {
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  position: relative;
+  padding: 0;
+}
+
+.theme-menu__button:disabled::before {
+  content: "▶";
+  height: 14px;
+  width: 14px;
+  padding-right: 2px;
+  position: absolute;
+  left: -21px;
+}
+
+/* Ниже стили для карты */
+
+.card {
+  width: clamp(23.188rem, 30.516vw + 16.035rem, 43.5rem);
+  margin: auto;
+  margin-bottom: 54px;
+  background-color: var(--background-color);
+  outline: 2px solid var(--accent-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.card__title {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 3px 24px 5px 10px;
+}
+
+.card__description {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  padding-top: 27px;
+  padding-bottom: 28px;
+}
+
+.card__description__text {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.card__image {
+  width: clamp(23.188rem, 30.516vw + 16.035rem, 43.5rem);
+  height: clamp(23.188rem, 30.516vw + 16.035rem, 43.5rem);
+  object-fit: cover;
+  object-position: 96% 43%;
+  outline: 2px solid var(--accent-color);
+}
+
+.card__icon-button {
+  padding: 0;
+  align-self: flex-end;
+  min-width: 169px;
+  min-height: 38px;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  background: none;
+  border: none;
+}
+
+.button__text {
+  padding: 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: var(--main-font-weight);
+}
+
+.like-icon {
+  width: 27px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__icon-button__text {
+  border: 2px solid var(--accent-color);
+  min-width: 130px;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Стили для Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__button {
+  width: 335px;
+  height: 51px;
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+}
+
+.footer__button__text {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 90%;
+}
+
+.diskette-icon {
+  width: 21px;
+  height: 21px;
+}
+
+.footer__button__paragraph {
+  text-wrap: nowrap;
+  align-self: center;
+}
+
+@media (width <= 375px) {
+  /* Стили для Header */
+  .header__title {
+    padding-block-start: 120px;
+  }
+
+/* Стили для карт */
+/* Решаю проблему с переносом слов ниже, чтобы соответствовало макету */
+
+  .card__description__text {
+    padding-right: 30px;
+  }
+  
+  .second-card-description {
+    padding-right: 3px;
+  }
+
+  /* Стили для Footer */
+
+  .footer__button {
+    width: 306px;
+    height: 80px;
+  }
+
+  .footer__button__text {
+    flex-direction: column;
+  }
+
+  .diskette-icon {
+    align-self: center;
+    width: 28px;
+    height: 28px;
+  }
 }
