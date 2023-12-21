@@ -179,6 +179,56 @@ transition: transform 0.3s ease;
   outline: 2px solid var(--accent-color);
 }
 
+.image-1 {
+  filter: grayscale(30%);
+  -webkit-filter: grayscale(30%);
+  -moz-filter: grayscale(30%);
+}
+
+.image-2 {
+  filter: grayscale(30%);
+  -webkit-filter: grayscale(30%);
+  -moz-filter: grayscale(30%);
+}
+
+.image-3 {
+  object-fit: cover;
+  object-position: 60% 0%;
+  filter: saturate(132%);
+  -webkit-filter: saturate(132%);
+  -moz-filter: saturate(132%);
+}
+
+.image-4 {
+  filter: blur(2px) contrast(118%);
+  -webkit-filter: blur(2px) contrast(118%);
+  -moz-filter: blur(2px) contrast(118%);
+}
+
+.image-5 {
+  filter: sepia(40%);
+  -webkit-filter: sepia(40%);
+  -moz-filter: sepia(40%);
+}
+
+.image-6 {
+  filter: grayscale(50%);
+  -webkit-filter: grayscale(50%);
+  -moz-filter: grayscale(50%);
+}
+
+.image-7 {
+  filter: sepia(40%);
+  -webkit-filter: sepia(40%);
+  -moz-filter: sepia(40%);
+}
+
+.image-8 {
+  filter: sepia(40%);
+  -webkit-filter: sepia(40%);
+  -moz-filter: sepia(40%);
+}
+
 .card__content {
   position: relative;
 }
