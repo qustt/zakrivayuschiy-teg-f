@@ -20,6 +20,8 @@
         #e7e7e7 0.01%, 
         #1a1a1a 100%
       );
+      --shadow-color: #fff;
+      --button-text-color: #fff;
 }
 
 :root.theme-dark {
@@ -37,6 +39,8 @@
     #007f0c 0%, 
     #004306 100%
   );
+  --shadow-color: #000;
+  --button-text-color: #00CC14;
 }
 
 .page.theme-dark {
@@ -54,6 +58,8 @@
     #007f0c 0%, 
     #004306 100%
   );
+  --shadow-color: #000;
+  --button-text-color: #00CC14;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -72,6 +78,8 @@
     #007f0c 0%, 
     #004306 100%
   );
+        --shadow-color: #000;
+        --button-text-color: #00CC14;
     }
 }
 
@@ -91,5 +99,7 @@
             #e7e7e7 0.01%, 
             #1a1a1a 100%
           );
+        --shadow-color: #fff;
+        --button-text-color: #fff;
     }
 }
