@@ -17,23 +17,27 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font);
+  font-family: var(--main-font), sans-serif;
+  font-variation-settings: "wght" 400;
   background-color: var(--background-color);
   color: var(--accent-color);
   background-image: var(--background-gradient);
-  background-position: cover;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 /* Ниже стили для шапки */
 
 .header {
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   background-color: var(--background-color);
   border: 2px solid var(--accent-color);
   width: clamp(23.188rem, 30.516vw + 16.035rem, 43.5rem);
-  height: 368px;
+  max-height: 368px;
   margin: 102px auto 104px;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
 }
 
 .header__title {
@@ -79,6 +83,7 @@
   line-height: normal;
   position: relative;
   padding: 0;
+  cursor: pointer;
 }
 
 .theme-menu__button:disabled::before {
@@ -90,15 +95,6 @@
   left: -21px;
   animation: flight 0.5s infinite ease-in-out alternate;
 }
-
-@keyframes flight {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(4px);
-  }
-} 
 
 .theme-menu__button:disabled {
   opacity: 0.6;
@@ -148,7 +144,7 @@ transition: transform 0.3s ease;
 .card__title {
   font-size: 18px;
   font-style: normal;
-  font-weight: 700;
+  font-variation-settings: "wght" 700;
   line-height: normal;
   padding: 3px 24px 5px 10px;
   outline: 2px solid var(--accent-color);
@@ -237,7 +233,7 @@ transition: transform 0.3s ease;
   position: absolute;
   top: 25px;
   right: 25px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -248,6 +244,14 @@ transition: transform 0.3s ease;
      0 0 2px var(--shadow-color); 
 }
 
+@supports((text-stroke: 1px var(--shadow-color)) or (-webkit-text-stroke: 1px var(--shadow-color))) {
+  .card__image__mark {
+      -webkit-text-stroke: 1px var(--shadow-color);
+      text-stroke: 1px var(--shadow-color);
+      text-shadow: none;
+  }
+} 
+
 .card__buttons {
   margin-right: 25px;
   margin-bottom: 25px;
@@ -255,8 +259,8 @@ transition: transform 0.3s ease;
   position: relative;
   justify-content: flex-end;
   align-items: flex-end;
-  gap: 9px;
-  font-family: var(--accent-font);
+  gap: 5px;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -266,10 +270,12 @@ transition: transform 0.3s ease;
 
 .card__icon-button {
   align-self: center;
+  padding: 0;
   height: 34px;
   width: 43px;
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 .card__icon-button:focus-visible {
@@ -343,33 +349,12 @@ transition: transform 0.3s ease;
   animation: scale 0.3s 0.1s alternate ease-in;
 }
 
-@keyframes sparks {
-  from {
-    opacity: 0;
-    
-  }
-  to {
-    opacity: 100;
-    
-  }
-}
-
-@keyframes scale {
-  from {
-    transform: scale(1);
-    
-  }
-  to {
-    transform: scale(1.5);
-    
-  }
-}
-
 .card__like-button {
   width: 130px;
   height: 38px;
   background: none;
   border: 2px solid var(--accent-color);
+  cursor: pointer;
 }
 
 .card__like-button:focus-visible {
@@ -414,11 +399,12 @@ transition: transform 0.3s ease;
 .footer__button {
   width: 335px;
   height: 51px;
+  margin-bottom: 105px;
   color: var(--accent-color);
   background-color: var(--background-color);
   border: 2px solid var(--accent-color);
   position: relative;
-  
+  cursor: pointer;
 }
 
 .footer__button:focus-visible {
@@ -431,26 +417,20 @@ transition: transform 0.3s ease;
   display: flex;
   justify-content: center;
   gap: 8px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 90%;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
+  text-wrap: nowrap;
+  align-items: center;
 }
 
 .diskette-icon {
-  width: 21px;
-  height: 21px;
-}
-
-.footer__button__paragraph {
-  text-wrap: nowrap;
-  align-self: center;
-}
-
-.footer__button__text {
-  color: var(--button-text-color);
-  mix-blend-mode: difference;
+  max-width: 21px;
+  max-height: 21px;
 }
 
 .footer__button::before {
@@ -465,7 +445,6 @@ transition: transform 0.3s ease;
   z-index: 0;
   transition: transform 0.5s ease-in-out;
   transform-origin: left;
-  
 }
 
 .footer__button:hover::before {
@@ -479,9 +458,9 @@ transition: transform 0.3s ease;
   
 }
 
-.dialog {
-  width: 357px;
-  height: 193px;
+.dialog[open] {
+  padding: 30px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -496,44 +475,75 @@ transition: transform 0.3s ease;
 } 
 
 .dialog__text {
-  margin: auto;
-  color: var(--accent-color);
+  width: 293px;
   display: flex;
   flex-direction: row;
   gap: 20px;
   align-items: center;
-  justify-content: center;
-}
-.dialog__paragraph {
-  width: 234px;
-  color: var(--accent-color);
-  font-family: var(--accent-font);
+  justify-content: space-between;
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 21px */
   text-transform: uppercase;
+  color: var(--accent-color);
 }
 
 .dialog__button {
-  background-color: var(--background-color);
-  color: var(--accent-color);
   width: 293px;
   height: 38px;
   border: 2px solid var(--accent-color);
   align-self: center;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 90%; /* 12.6px */
-  text-transform: uppercase;
+  text-transform: uppercase; 
+  cursor: pointer;
+  color: var(--button-text-color);
+  background-color: var(--background-color);
+}
+
+.dialog__button:focus-visible {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--accent-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.dialog__form {
+  position: relative;
+}
+
+.dialog__button::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+  background-color: var(--accent-color);
+}
+
+.dialog__button-text {
+mix-blend-mode: difference;
+}
+
+.dialog__button:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
 }
 
 .diskette-icon-dialog {
-  width: 39px;
-  height: 39px;
+ max-width: 39px;
+ max-height: 39px;
 }
+
 
 @media (width <= 375px) {
   /* Стили для Header */
@@ -552,6 +562,9 @@ transition: transform 0.3s ease;
     padding-right: 3px;
   }
 
+  .card__image__mark {
+    right: 11px; 
+  }
   /* Стили для Footer */
 
   .footer__button {
@@ -567,6 +580,16 @@ transition: transform 0.3s ease;
     align-self: center;
     width: 28px;
     height: 28px;
+  }
+
+  .dialog {
+    padding: 30px 40px;
+    overflow: hidden;
+  }
+
+  .dialog__button {
+    max-width: 257px;
+    margin: auto;
   }
 }
 
